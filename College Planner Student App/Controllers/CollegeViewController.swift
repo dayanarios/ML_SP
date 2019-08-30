@@ -10,10 +10,14 @@ import UIKit
 
 class CollegeViewController: UITableViewController {
     
-    var colleges : [String] = ["UCLA", "USC", "CSULB", "Cal"]
+    var colleges : [College] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        colleges = createArray()
+        
         
         tableView.separatorStyle = .none
         
@@ -37,13 +41,11 @@ class CollegeViewController: UITableViewController {
         
         cell.selectionStyle = .none
         
-//        cell.containerView.layer.cornerRadius = 10
-//        cell.containerView.layer.masksToBounds = true
-//        
         //cell.textLabel?.text = colleges[indexPath.row]
-        cell.collegeNameLabel.text = colleges[indexPath.row]
-        cell.dueDateLabel.text = colleges[indexPath.row]
-        print(colleges[indexPath.row])
+        cell.collegeNameLabel.text = colleges[indexPath.row].name
+        
+        //TODO: - Change date
+        cell.dueDateLabel.text = colleges[indexPath.row].getDate()
         
         return cell
     }
@@ -51,14 +53,58 @@ class CollegeViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "goToTasks", sender: self)
     }
+    
+    //MARK: - Segue Methods
+    
+    //sends data to second view controller for display
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToTasks" {
+            
+            let taskVC = segue.destination as! TaskViewController
+            
+            if let indexPath = tableView.indexPathForSelectedRow {
+                
+                taskVC.collegeName = colleges[indexPath.row].name
+                taskVC.dueDate = colleges[indexPath.row].getDate()
+                taskVC.tasks = colleges[indexPath.row].tasks
+                
+                //destinationVC.selectedCategory = categories?[indexPath.row]
+            }
+            
+            
+            
 
-    func createArray() -> [String]{
-        var tempColleges : [String] = []
+            
+            //secondVC.delegate = self        //stating this VC will handle data coming from secondVC
+            //print(secondVC.data)
+        }
+    }
+    
+
+    func createArray() -> [College]{
+        var tempColleges : [College] = []
+        //var tempColleges : [String] = []
         
-        tempColleges.append("UCLA")
-        tempColleges.append("USC")
-        tempColleges.append("CSULB")
-        tempColleges.append("Cal")
+        let task1 : Task = Task(name : "parent demographics")
+        let task2 : Task = Task(name : "student demographics")
+        let task3 : Task = Task(name : "academics")
+        let task4 : Task = Task(name : "personal essays")
+        let task5 : Task = Task(name : "activities")
+        
+        let tasks1 : [Task] = [task1, task2, task3, task4, task5]
+        let tasks2 : [Task] = [task5, task4, task3, task2, task1, task5, task4, task3, task2, task1]
+        let tasks3 : [Task] = [task1, task3, task5, task4, task2]
+        let tasks4 : [Task] = [task2, task4, task3, task1, task5]
+        
+        let t1 : College = College(name : "UCLA", dueDate : Date(), tasks : tasks1)
+        let t2 : College = College(name : "USC", dueDate : Date(), tasks : tasks2)
+        let t3 : College = College(name : "Cal", dueDate : Date(), tasks :tasks3)
+        let t4 : College = College(name : "Stanford", dueDate : Date(), tasks :tasks4)
+        
+        tempColleges.append(t1)
+        tempColleges.append(t2)
+        tempColleges.append(t3)
+        tempColleges.append(t4)
         
         return tempColleges
     }

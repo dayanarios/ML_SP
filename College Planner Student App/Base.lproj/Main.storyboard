@@ -104,16 +104,16 @@
                                             <rect key="frame" x="20" y="7" width="374" height="112"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WmU-8Z-v0q" userLabel="DueDateLabel">
-                                                    <rect key="frame" x="135" y="68" width="231" height="23.5"/>
+                                                    <rect key="frame" x="135" y="67.5" width="231" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="231" id="1OF-25-JOk"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3NN-XX-lJB" userLabel="CollegeNameLabel">
-                                                    <rect key="frame" x="135" y="24" width="231" height="35.5"/>
+                                                    <rect key="frame" x="135" y="24" width="231" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="231" id="Aa4-wf-nQb"/>
                                                     </constraints>
@@ -160,7 +160,10 @@
                             <outlet property="delegate" destination="0PC-hy-KGn" id="5BJ-iT-sCa"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="TE4-iN-LHo"/>
+                    <navigationItem key="navigationItem" id="TE4-iN-LHo">
+                        <barButtonItem key="leftBarButtonItem" title="Sort" id="gom-c7-OLH"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="SiI-zb-lvr"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="dVN-P5-D3c" kind="show" identifier="goToTasks" id="fda-P6-VQ7"/>
                     </connections>
@@ -172,7 +175,7 @@
         <!--Tasks View Controller-->
         <scene sceneID="71X-wP-yAG">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="dVN-P5-D3c" userLabel="Tasks View Controller" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="dVN-P5-D3c" userLabel="Tasks View Controller" customClass="TaskViewController" customModule="College_Planner_Student_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q17-nT-QGY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -205,7 +208,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="217" id="enz-Wx-dbH"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -227,7 +230,7 @@
                                                     <constraint firstAttribute="width" constant="369" id="jMm-Ot-XaN"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="61" id="FcE-ZH-5Mg">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" rowHeight="61" id="FcE-ZH-5Mg">
                                                         <rect key="frame" x="0.0" y="28" width="369" height="61"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FcE-ZH-5Mg" id="XHm-tH-6Tl">
@@ -253,7 +256,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="369" id="AhN-8m-gce"/>
                                                 </constraints>
-                                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
@@ -317,6 +320,12 @@
                         <viewLayoutGuide key="safeArea" id="kJW-Ai-EnB"/>
                     </view>
                     <size key="freeformSize" width="414" height="1000"/>
+                    <connections>
+                        <outlet property="collegeNameLabel" destination="gyJ-27-AJp" id="gpZ-Ll-lvu"/>
+                        <outlet property="dueDateLabel" destination="4ne-4u-B9W" id="oQH-5i-lom"/>
+                        <outlet property="notesTextView" destination="LAH-Zn-yVE" id="v0a-pE-eYC"/>
+                        <outlet property="taskTableView" destination="oTY-jw-FYZ" id="X3n-Vz-P3w"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9FN-D3-b9g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

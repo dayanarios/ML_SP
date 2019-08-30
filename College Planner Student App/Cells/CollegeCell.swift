@@ -39,15 +39,7 @@ class CollegeCell: UITableViewCell {
     
     func setCollegeCell(college : College){
         collegeNameLabel.text = college.name
-        
-        let date : Date = college.dueDate
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .full
-        dateFormatter.timeStyle = .none
-        dateFormatter.dateFormat = "MMMM-dd-yyyy"
-        let dateString = dateFormatter.string(from: date)
-        
-        dueDateLabel.text = dateString
+        dueDateLabel.text = college.getDate()
     }
     
 }
