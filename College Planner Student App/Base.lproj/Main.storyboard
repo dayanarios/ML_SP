@@ -162,15 +162,35 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="TE4-iN-LHo">
                         <barButtonItem key="leftBarButtonItem" title="Sort" id="gom-c7-OLH"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="SiI-zb-lvr"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="SiI-zb-lvr">
+                            <connections>
+                                <action selector="addCollegeButtonPressed:" destination="0PC-hy-KGn" id="QU5-iz-HiB"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="dVN-P5-D3c" kind="show" identifier="goToTasks" id="fda-P6-VQ7"/>
+                        <segue destination="NXM-JX-heK" kind="show" identifier="goToAddCollege" id="JaY-lr-9Wv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Pa-jG-gnt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1676.8115942028987" y="1030.5803571428571"/>
+        </scene>
+        <!--Add College-->
+        <scene sceneID="gzF-js-SaM">
+            <objects>
+                <viewController title="Add College" id="NXM-JX-heK" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nNb-oN-hnh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="FHF-AK-vas"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vHa-H5-J8O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2646" y="1018"/>
         </scene>
         <!--Tasks View Controller-->
         <scene sceneID="71X-wP-yAG">
@@ -329,7 +349,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9FN-D3-b9g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2447.826086956522" y="1029.9107142857142"/>
+            <point key="canvasLocation" x="2593" y="1808"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

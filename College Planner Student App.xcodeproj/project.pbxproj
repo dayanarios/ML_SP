@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		90604F34ED2364A30D9E7708 /* Pods_College_Planner_Student_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C6C971C346FD8C5F79B4D3E /* Pods_College_Planner_Student_App.framework */; };
 		FB69E4F0231877FA00EAD4DA /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB69E4EF231877FA00EAD4DA /* TaskViewController.swift */; };
 		FB69E4F22318797800EAD4DA /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB69E4F12318797800EAD4DA /* Task.swift */; };
 		FB72F12623170A2100AFBEFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB72F12523170A2100AFBEFE /* AppDelegate.swift */; };
@@ -21,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C6C971C346FD8C5F79B4D3E /* Pods_College_Planner_Student_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_College_Planner_Student_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5B5F92C45831711F6BB8408 /* Pods-College Planner Student App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-College Planner Student App.debug.xcconfig"; path = "Target Support Files/Pods-College Planner Student App/Pods-College Planner Student App.debug.xcconfig"; sourceTree = "<group>"; };
+		B4FDD440E82D7055BF273B5A /* Pods-College Planner Student App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-College Planner Student App.release.xcconfig"; path = "Target Support Files/Pods-College Planner Student App/Pods-College Planner Student App.release.xcconfig"; sourceTree = "<group>"; };
 		FB69E4EF231877FA00EAD4DA /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		FB69E4F12318797800EAD4DA /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		FB72F12223170A2100AFBEFE /* College Planner Student App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "College Planner Student App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,17 +45,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90604F34ED2364A30D9E7708 /* Pods_College_Planner_Student_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0EBC1AF41821D7FBE1D33E6C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A5B5F92C45831711F6BB8408 /* Pods-College Planner Student App.debug.xcconfig */,
+				B4FDD440E82D7055BF273B5A /* Pods-College Planner Student App.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		434A2D6246113FC6E1C3AE49 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8C6C971C346FD8C5F79B4D3E /* Pods_College_Planner_Student_App.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FB72F11923170A2100AFBEFE = {
 			isa = PBXGroup;
 			children = (
 				FB72F12423170A2100AFBEFE /* College Planner Student App */,
 				FB72F12323170A2100AFBEFE /* Products */,
+				0EBC1AF41821D7FBE1D33E6C /* Pods */,
+				434A2D6246113FC6E1C3AE49 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,9 +138,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FB72F13623170A2100AFBEFE /* Build configuration list for PBXNativeTarget "College Planner Student App" */;
 			buildPhases = (
+				A46290745A50EF448AF8B9DA /* [CP] Check Pods Manifest.lock */,
 				FB72F11E23170A2100AFBEFE /* Sources */,
 				FB72F11F23170A2100AFBEFE /* Frameworks */,
 				FB72F12023170A2100AFBEFE /* Resources */,
+				23303A705C72B0608ECCE807 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -171,6 +198,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		23303A705C72B0608ECCE807 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-College Planner Student App/Pods-College Planner Student App-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-College Planner Student App/Pods-College Planner Student App-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-College Planner Student App/Pods-College Planner Student App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A46290745A50EF448AF8B9DA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-College Planner Student App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FB72F11E23170A2100AFBEFE /* Sources */ = {
@@ -328,6 +397,7 @@
 		};
 		FB72F13723170A2100AFBEFE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5B5F92C45831711F6BB8408 /* Pods-College Planner Student App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -345,6 +415,7 @@
 		};
 		FB72F13823170A2100AFBEFE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4FDD440E82D7055BF273B5A /* Pods-College Planner Student App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

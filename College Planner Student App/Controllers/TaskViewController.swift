@@ -34,7 +34,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // view setup
         collegeNameLabel.text = collegeName
-        dueDateLabel.text = dueDate
+        dueDateLabel.text = "Due: " + dueDate
         
 
     }

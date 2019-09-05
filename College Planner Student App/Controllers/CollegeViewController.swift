@@ -45,7 +45,7 @@ class CollegeViewController: UITableViewController {
         cell.collegeNameLabel.text = colleges[indexPath.row].name
         
         //TODO: - Change date
-        cell.dueDateLabel.text = colleges[indexPath.row].getDate()
+        cell.dueDateLabel.text = "Due: " + colleges[indexPath.row].getDate()
         
         return cell
     }
@@ -78,6 +78,21 @@ class CollegeViewController: UITableViewController {
             //secondVC.delegate = self        //stating this VC will handle data coming from secondVC
             //print(secondVC.data)
         }
+    }
+    
+    
+    //MARK: - Add Task Button Methods
+    
+    
+    @IBAction func addCollegeButtonPressed(_ sender: UIBarButtonItem) {
+        
+    }
+    
+    
+    //MARK: - College Manipulation Methods
+    
+    func saveCollege(newCollege : College){
+        colleges.append(newCollege)
     }
     
 
