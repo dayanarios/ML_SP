@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,7 @@
 		FB72F13A23170AE800AFBEFE /* CollegeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB72F13923170AE800AFBEFE /* CollegeViewController.swift */; };
 		FB72F13E231716DA00AFBEFE /* College.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB72F13D231716DA00AFBEFE /* College.swift */; };
 		FB72F141231716EB00AFBEFE /* CollegeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB72F140231716EB00AFBEFE /* CollegeCell.swift */; };
+		FBF66D812321B70B00CAB26F /* AddCollegeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF66D802321B70B00CAB26F /* AddCollegeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		FB72F13923170AE800AFBEFE /* CollegeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeViewController.swift; sourceTree = "<group>"; };
 		FB72F13D231716DA00AFBEFE /* College.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = College.swift; sourceTree = "<group>"; };
 		FB72F140231716EB00AFBEFE /* CollegeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollegeCell.swift; sourceTree = "<group>"; };
+		FBF66D802321B70B00CAB26F /* AddCollegeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollegeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,6 @@
 				A5B5F92C45831711F6BB8408 /* Pods-College Planner Student App.debug.xcconfig */,
 				B4FDD440E82D7055BF273B5A /* Pods-College Planner Student App.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -110,6 +111,7 @@
 				FB69E4EF231877FA00EAD4DA /* TaskViewController.swift */,
 				FB72F12723170A2100AFBEFE /* FirstViewController.swift */,
 				FB72F12923170A2100AFBEFE /* SecondViewController.swift */,
+				FBF66D802321B70B00CAB26F /* AddCollegeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -250,6 +252,7 @@
 				FB72F13A23170AE800AFBEFE /* CollegeViewController.swift in Sources */,
 				FB69E4F0231877FA00EAD4DA /* TaskViewController.swift in Sources */,
 				FB72F12A23170A2100AFBEFE /* SecondViewController.swift in Sources */,
+				FBF66D812321B70B00CAB26F /* AddCollegeViewController.swift in Sources */,
 				FB72F12623170A2100AFBEFE /* AppDelegate.swift in Sources */,
 				FB72F141231716EB00AFBEFE /* CollegeCell.swift in Sources */,
 				FB72F12823170A2100AFBEFE /* FirstViewController.swift in Sources */,

@@ -8,15 +8,19 @@
 
 import UIKit
 
-class CollegeViewController: UITableViewController {
+class CollegeViewController: UITableViewController, collegeData {
     
     var colleges : [College] = []
+    var firstDisplay : Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if firstDisplay == true{
+            colleges = createArray()
+            firstDisplay = false
+        }
         
-        colleges = createArray()
         
         
         tableView.separatorStyle = .none
@@ -25,6 +29,11 @@ class CollegeViewController: UITableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 600
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -36,6 +45,7 @@ class CollegeViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CollegeCell", for: indexPath) as! CollegeCell
         
@@ -70,13 +80,13 @@ class CollegeViewController: UITableViewController {
                 
                 //destinationVC.selectedCategory = categories?[indexPath.row]
             }
-            
-            
-            
 
+        }
+        else if segue.identifier == "goToAddCollege"{
+            let collegeVC = segue.destination as! AddCollegeViewController
+            collegeVC.delegate = self
+            //print(collegeVC.collegeTextField.text)
             
-            //secondVC.delegate = self        //stating this VC will handle data coming from secondVC
-            //print(secondVC.data)
         }
     }
     
@@ -85,9 +95,15 @@ class CollegeViewController: UITableViewController {
     
     
     @IBAction func addCollegeButtonPressed(_ sender: UIBarButtonItem) {
-        
+        performSegue(withIdentifier: "goToAddCollege", sender: self)
     }
     
+    //MARK: - College Added protocol
+    
+    func collegeAdded(college: College) {
+        print(college.name)
+        saveCollege(newCollege: college)
+    }
     
     //MARK: - College Manipulation Methods
     
