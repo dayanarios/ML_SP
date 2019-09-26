@@ -320,6 +320,7 @@
                     <connections>
                         <outlet property="collegeTextField" destination="ndh-cY-swa" id="BqA-TM-Vf7"/>
                         <outlet property="dueDatePicker" destination="Bwf-sQ-5Y7" id="aOY-rX-WJX"/>
+                        <outlet property="notesTextView" destination="WGx-CF-au2" id="aN3-V8-0d3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vHa-H5-J8O" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -416,6 +417,9 @@
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7M-DZ-hq0">
                                                 <rect key="frame" x="358" y="204" width="22" height="22"/>
+                                                <connections>
+                                                    <action selector="addTaskButtonPressed:" destination="dVN-P5-D3c" eventType="touchUpInside" id="n3G-JO-kUU"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -504,11 +508,11 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--Item-->
+        <!--Colleges-->
         <scene sceneID="V0r-gp-iVD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CHB-DR-20p" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="8iZ-lB-RGZ"/>
+                    <tabBarItem key="tabBarItem" title="Colleges" id="8iZ-lB-RGZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i4o-Xf-vpj">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

@@ -13,11 +13,13 @@ class College {
     var name : String = ""
     var dueDate : Date
     var tasks : [Task] = []
+    var notes : String = ""
     
-    init(name : String , dueDate : Date, tasks : [Task]) {
+    init(name : String , dueDate : Date, tasks : [Task], notes : String) {
         self.name = name
         self.dueDate = dueDate
         self.tasks = tasks
+        self.notes = notes
     }
     
     func addTask(task : Task){

@@ -74,9 +74,7 @@ class CollegeViewController: UITableViewController, collegeData {
             
             if let indexPath = tableView.indexPathForSelectedRow {
                 
-                taskVC.collegeName = colleges[indexPath.row].name
-                taskVC.dueDate = colleges[indexPath.row].getDate()
-                taskVC.tasks = colleges[indexPath.row].tasks
+                taskVC.college = colleges[indexPath.row]
                 
                 //destinationVC.selectedCategory = categories?[indexPath.row]
             }
@@ -127,10 +125,12 @@ class CollegeViewController: UITableViewController, collegeData {
         let tasks3 : [Task] = [task1, task3, task5, task4, task2]
         let tasks4 : [Task] = [task2, task4, task3, task1, task5]
         
-        let t1 : College = College(name : "UCLA", dueDate : Date(), tasks : tasks1)
-        let t2 : College = College(name : "USC", dueDate : Date(), tasks : tasks2)
-        let t3 : College = College(name : "Cal", dueDate : Date(), tasks :tasks3)
-        let t4 : College = College(name : "Stanford", dueDate : Date(), tasks :tasks4)
+        let note : String = "ask for letter of recommendation"
+        
+        let t1 : College = College(name : "UCLA", dueDate : Date(), tasks : tasks1, notes: note)
+        let t2 : College = College(name : "USC", dueDate : Date(), tasks : tasks2, notes: note)
+        let t3 : College = College(name : "Cal", dueDate : Date(), tasks :tasks3, notes: note)
+        let t4 : College = College(name : "Stanford", dueDate : Date(), tasks :tasks4, notes: note)
         
         tempColleges.append(t1)
         tempColleges.append(t2)

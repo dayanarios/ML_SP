@@ -20,6 +20,8 @@ class AddCollegeViewController: UIViewController {
     
     @IBOutlet weak var dueDatePicker: UIDatePicker!
     
+    @IBOutlet weak var notesTextView: UITextView!
+    
     var delegate : collegeData?
 
     
@@ -38,7 +40,7 @@ class AddCollegeViewController: UIViewController {
         let task1 : Task = Task(name : "parent demographics")
 
         
-       let newCollege : College = College(name : collegeTextField.text ?? " ", dueDate : dueDatePicker.date, tasks : [task1])
+        let newCollege : College = College(name : collegeTextField.text ?? " ", dueDate : dueDatePicker.date, tasks : [task1], notes : notesTextView.text)
         
         delegate?.collegeAdded(college: newCollege)
         self.navigationController?.popViewController(animated: true)
