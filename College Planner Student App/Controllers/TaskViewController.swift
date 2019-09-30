@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import CircleProgressBar
 
 class TaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var college : College?
     
+    @IBOutlet weak var progressBar: CircleProgressBar!
     
     @IBOutlet weak var dueDateLabel: UILabel!
     @IBOutlet weak var collegeNameLabel: UILabel!
@@ -33,6 +35,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         collegeNameLabel.text = college?.name
         dueDateLabel.text = "Due: " + (college?.getDate())!
         notesTextView.text = college?.notes
+        progressBar.setProgress(college?.progress ?? 0, animated: true)
 
         
 
@@ -50,8 +53,11 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         cell.textLabel?.text = college!.tasks[indexPath.row].name
         
+        
         //toggles checkmark depending on done status
         cell.accessoryType = college!.tasks[indexPath.row].done ? .checkmark : .none
+        
+        progressBar.setProgress(college?.progress ?? 0, animated: true)
         
         return cell
     
@@ -66,6 +72,9 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.reloadData()
         tableView.deselectRow(at: indexPath, animated: true)
+        college?.updateProgress()
+        progressBar.setProgress(college?.progress ?? 0, animated: true)
+        
     }
     
     
@@ -98,6 +107,9 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         present(alert, animated: true, completion: nil)
+        
+        college?.updateProgress()
+        progressBar.setProgress(college?.progress ?? 0, animated: true)
         
 
     }

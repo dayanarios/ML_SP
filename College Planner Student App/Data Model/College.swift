@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class College {
     //var progressBar will be inside of the view added
@@ -14,6 +15,8 @@ class College {
     var dueDate : Date
     var tasks : [Task] = []
     var notes : String = ""
+    var progress = CGFloat(0)
+    var completedTasks : Int = 0
     
     init(name : String , dueDate : Date, tasks : [Task], notes : String) {
         self.name = name
@@ -24,6 +27,7 @@ class College {
     
     func addTask(task : Task){
         tasks.append(task)
+        updateProgress()
     }
     
     //returns the date as a string
@@ -39,5 +43,19 @@ class College {
         return dateFormatter.string(from: date)
         
     
+    }
+    
+    func updateProgress() {
+        completedTasks = 0
+        
+        for task in tasks{
+            if task.done {
+                completedTasks += 1
+            }
+        }
+        
+        progress = CGFloat(completedTasks) /  CGFloat(tasks.count)
+        print(progress)
+        
     }
 }

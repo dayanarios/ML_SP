@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CircleProgressBar
 
 class CollegeViewController: UITableViewController, collegeData {
     
@@ -57,6 +58,7 @@ class CollegeViewController: UITableViewController, collegeData {
         //TODO: - Change date
         cell.dueDateLabel.text = "Due: " + colleges[indexPath.row].getDate()
         
+        
         return cell
     }
     
@@ -76,7 +78,7 @@ class CollegeViewController: UITableViewController, collegeData {
                 
                 taskVC.college = colleges[indexPath.row]
                 
-                //destinationVC.selectedCategory = categories?[indexPath.row]
+                
             }
 
         }

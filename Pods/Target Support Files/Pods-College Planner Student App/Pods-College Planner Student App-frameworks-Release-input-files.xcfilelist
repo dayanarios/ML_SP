@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-College Planner Student App/Pods-College Planner Student App-frameworks.sh
+${BUILT_PRODUCTS_DIR}/CircleProgressBar/CircleProgressBar.framework
 ${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework
