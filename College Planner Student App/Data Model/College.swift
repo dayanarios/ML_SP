@@ -8,22 +8,18 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
-class College {
+class College: Object {
     //var progressBar will be inside of the view added
-    var name : String = ""
-    var dueDate : Date
-    var tasks : [Task] = []
-    var notes : String = ""
-    var progress = CGFloat(0)
-    var completedTasks : Int = 0
+     @objc dynamic var name : String = ""
+     @objc dynamic var dueDate : Date = Date()
+     let  tasks = List<Task>()
+     @objc dynamic var notes : String = ""
+     @objc dynamic var progress = CGFloat(0)
+     @objc dynamic var completedTasks : Int = 0
     
-    init(name : String , dueDate : Date, tasks : [Task], notes : String) {
-        self.name = name
-        self.dueDate = dueDate
-        self.tasks = tasks
-        self.notes = notes
-    }
+
     
     func addTask(task : Task){
         tasks.append(task)

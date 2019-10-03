@@ -8,19 +8,18 @@
 
 import UIKit
 import CircleProgressBar
+import RealmSwift
 
 class CollegeViewController: UITableViewController, collegeData {
     
-    var colleges : [College] = []
-    var firstDisplay : Bool = true
+    var colleges : Results<College>?
+    
+    let realm = try! Realm()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if firstDisplay == true{
-            colleges = createArray()
-            firstDisplay = false
-        }
+        loadColleges()
         
         
         
@@ -42,7 +41,7 @@ class CollegeViewController: UITableViewController, collegeData {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return colleges.count
+        return colleges?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -53,10 +52,11 @@ class CollegeViewController: UITableViewController, collegeData {
         cell.selectionStyle = .none
         
         //cell.textLabel?.text = colleges[indexPath.row]
-        cell.collegeNameLabel.text = colleges[indexPath.row].name
+        cell.collegeNameLabel.text = colleges?[indexPath.row].name ?? "No college name added"
         
         //TODO: - Change date
-        cell.dueDateLabel.text = "Due: " + colleges[indexPath.row].getDate()
+        let date = colleges?[indexPath.row].getDate() ?? " "
+        cell.dueDateLabel.text = "Due: " + date
         
         
         return cell
@@ -76,7 +76,7 @@ class CollegeViewController: UITableViewController, collegeData {
             
             if let indexPath = tableView.indexPathForSelectedRow {
                 
-                taskVC.college = colleges[indexPath.row]
+                taskVC.college = colleges?[indexPath.row] 
                 
                 
             }
@@ -91,7 +91,7 @@ class CollegeViewController: UITableViewController, collegeData {
     }
     
     
-    //MARK: - Add Task Button Methods
+    //MARK: - Add College Button Methods
     
     
     @IBAction func addCollegeButtonPressed(_ sender: UIBarButtonItem) {
@@ -108,39 +108,52 @@ class CollegeViewController: UITableViewController, collegeData {
     //MARK: - College Manipulation Methods
     
     func saveCollege(newCollege : College){
-        colleges.append(newCollege)
+        
+        do{
+            try realm.write {
+                realm.add(newCollege)
+            }
+        } catch {
+            print("error saving added college \(error)")
+        }
+        
+        //tableView.reloadData()
+    }
+
+    func loadColleges(){
+        colleges = realm.objects(College.self)
     }
     
 
-    func createArray() -> [College]{
-        var tempColleges : [College] = []
-        //var tempColleges : [String] = []
-        
-        let task1 : Task = Task(name : "parent demographics")
-        let task2 : Task = Task(name : "student demographics")
-        let task3 : Task = Task(name : "academics")
-        let task4 : Task = Task(name : "personal essays")
-        let task5 : Task = Task(name : "activities")
-        
-        let tasks1 : [Task] = [task1, task2, task3, task4, task5]
-        let tasks2 : [Task] = [task5, task4, task3, task2, task1, task5, task4, task3, task2, task1]
-        let tasks3 : [Task] = [task1, task3, task5, task4, task2]
-        let tasks4 : [Task] = [task2, task4, task3, task1, task5]
-        
-        let note : String = "ask for letter of recommendation"
-        
-        let t1 : College = College(name : "UCLA", dueDate : Date(), tasks : tasks1, notes: note)
-        let t2 : College = College(name : "USC", dueDate : Date(), tasks : tasks2, notes: note)
-        let t3 : College = College(name : "Cal", dueDate : Date(), tasks :tasks3, notes: note)
-        let t4 : College = College(name : "Stanford", dueDate : Date(), tasks :tasks4, notes: note)
-        
-        tempColleges.append(t1)
-        tempColleges.append(t2)
-        tempColleges.append(t3)
-        tempColleges.append(t4)
-        
-        return tempColleges
-    }
+//    func createArray() -> [College]{
+//        var tempColleges : [College] = []
+//        //var tempColleges : [String] = []
+//
+//        let task1 : Task = Task(name : "parent demographics")
+//        let task2 : Task = Task(name : "student demographics")
+//        let task3 : Task = Task(name : "academics")
+//        let task4 : Task = Task(name : "personal essays")
+//        let task5 : Task = Task(name : "activities")
+//
+//        let tasks1 : [Task] = [task1, task2, task3, task4, task5]
+//        let tasks2 : [Task] = [task5, task4, task3, task2, task1, task5, task4, task3, task2, task1]
+//        let tasks3 : [Task] = [task1, task3, task5, task4, task2]
+//        let tasks4 : [Task] = [task2, task4, task3, task1, task5]
+//
+//        let note : String = "ask for letter of recommendation"
+//
+//        let t1 : College = College(name : "UCLA", dueDate : Date(), tasks : tasks1, notes: note)
+//        let t2 : College = College(name : "USC", dueDate : Date(), tasks : tasks2, notes: note)
+//        let t3 : College = College(name : "Cal", dueDate : Date(), tasks :tasks3, notes: note)
+//        let t4 : College = College(name : "Stanford", dueDate : Date(), tasks :tasks4, notes: note)
+//
+//        tempColleges.append(t1)
+//        tempColleges.append(t2)
+//        tempColleges.append(t3)
+//        tempColleges.append(t4)
+//
+//        return tempColleges
+//    }
 
 
 }

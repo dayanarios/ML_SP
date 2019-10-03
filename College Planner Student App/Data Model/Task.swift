@@ -7,16 +7,18 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Task {
-    var name : String = ""
-    var done : Bool = false
+class Task: Object {
+    @objc dynamic var name : String = ""
+    @objc dynamic var done : Bool = false
+    var parentCollege = LinkingObjects(fromType: College.self, property: "tasks")
     
     //creating a one to one relationship with a Category object
     //items is the name of list of a categories items
     //var parentCategory = LinkingObjects(fromType: Category.self, property: "items")
     
-    init(name : String) {
-        self.name = name
-    }
+//    init(name : String) {
+//        self.name = name
+//    }
 }

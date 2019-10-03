@@ -8,10 +8,18 @@
 
 import UIKit
 import CircleProgressBar
+import RealmSwift
 
 class TaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var college : College?
+    var tasks : Results<Task>?
+    let realm = try! Realm()
+    
+    var college : College?{
+        didSet{
+            loadItems()
+        }
+    }
     
     @IBOutlet weak var progressBar: CircleProgressBar!
     
@@ -44,18 +52,20 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: - Table view methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return college?.tasks.count ?? 1
+        return tasks?.count ?? 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath)
         
-        cell.textLabel?.text = college!.tasks[indexPath.row].name
-        
-        
-        //toggles checkmark depending on done status
-        cell.accessoryType = college!.tasks[indexPath.row].done ? .checkmark : .none
+        if let task = tasks?[indexPath.row]{
+            cell.textLabel?.text = task.name
+            //toggles checkmark depending on done status
+            cell.accessoryType = task.done ? .checkmark : .none
+        }else{
+            cell.textLabel?.text = "no task added"
+        }
         
         progressBar.setProgress(college?.progress ?? 0, animated: true)
         
@@ -66,14 +76,14 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //toggle the checkmark if the item is not nil
         //update attribute in our realm db
-        if let task = college?.tasks[indexPath.row]{
-                task.done = !task.done
-        }
-        
-        tableView.reloadData()
-        tableView.deselectRow(at: indexPath, animated: true)
-        college?.updateProgress()
-        progressBar.setProgress(college?.progress ?? 0, animated: true)
+//        if let task = college?.tasks[indexPath.row]{
+//                task.done = !task.done
+//        }
+//
+//        tableView.reloadData()
+//        tableView.deselectRow(at: indexPath, animated: true)
+//        college?.updateProgress()
+//        progressBar.setProgress(college?.progress ?? 0, animated: true)
         
     }
     
@@ -89,9 +99,20 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         let alert = UIAlertController(title: "Add Task", message: "", preferredStyle: .alert)
         
         let addAction = UIAlertAction(title: "Add", style: .default) { (action) in
-            let taskName = textField.text!
-            let newTask : Task = Task(name: taskName)
-            self.college?.addTask(task: newTask)
+            
+            if let currentCollege = self.college{
+                do {
+                    try self.realm.write {
+                        let newTask = Task()
+                        newTask.name = textField.text!
+                        currentCollege.tasks.append(newTask)
+                    }
+                } catch {
+                    print("error saving task \(error)")
+                }
+
+            }
+            
             self.taskTableView.reloadData()
         }
         
@@ -108,10 +129,17 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         present(alert, animated: true, completion: nil)
         
-        college?.updateProgress()
-        progressBar.setProgress(college?.progress ?? 0, animated: true)
+        //college?.updateProgress()
+        //progressBar.setProgress(college?.progress ?? 0, animated: true)
         
 
+    }
+    
+    //MARK: - task manipulation methods
+    
+    func loadItems(){
+        tasks = college?.tasks.sorted(byKeyPath: "name", ascending: true)
+        //taskTableView.reloadData() //is causing an error
     }
     
 

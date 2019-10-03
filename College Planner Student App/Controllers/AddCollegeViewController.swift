@@ -37,10 +37,15 @@ class AddCollegeViewController: UIViewController {
         
         
         
-        let task1 : Task = Task(name : "parent demographics")
+        let task1 : Task = Task()
+        task1.name = "parent demographics"
 
         
-        let newCollege : College = College(name : collegeTextField.text ?? " ", dueDate : dueDatePicker.date, tasks : [task1], notes : notesTextView.text)
+        let newCollege = College()//College(name : collegeTextField.text ?? " ", dueDate : dueDatePicker.date, tasks : [task1], notes : notesTextView.text)
+        newCollege.name = collegeTextField.text ?? " "
+        newCollege.dueDate = dueDatePicker.date
+        newCollege.tasks.append(task1)
+        newCollege.notes = notesTextView.text
         
         delegate?.collegeAdded(college: newCollege)
         self.navigationController?.popViewController(animated: true)
