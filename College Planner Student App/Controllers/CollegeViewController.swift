@@ -111,6 +111,7 @@ class CollegeViewController: UITableViewController, collegeData {
         
         do{
             try realm.write {
+                newCollege.updateProgress()
                 realm.add(newCollege)
             }
         } catch {

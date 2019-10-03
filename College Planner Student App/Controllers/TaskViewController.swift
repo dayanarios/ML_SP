@@ -76,14 +76,31 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //toggle the checkmark if the item is not nil
         //update attribute in our realm db
-//        if let task = college?.tasks[indexPath.row]{
-//                task.done = !task.done
-//        }
-//
-//        tableView.reloadData()
-//        tableView.deselectRow(at: indexPath, animated: true)
-//        college?.updateProgress()
-//        progressBar.setProgress(college?.progress ?? 0, animated: true)
+        if let task = tasks?[indexPath.row]{
+            do{
+                try realm.write {
+                    task.done = !task.done
+                }
+            }catch {
+                print("error updating task status, \("error")")
+            }
+            
+        }
+
+        tableView.reloadData()
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if let currentCollege = self.college{
+            do{
+                try self.realm.write {
+                    currentCollege.updateProgress()
+                }
+            }catch {
+                print("error updating college progress \("error")")
+            }
+        }
+        
+        progressBar.setProgress(college?.progress ?? 0, animated: true)
         
     }
     
@@ -129,8 +146,16 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         present(alert, animated: true, completion: nil)
         
-        //college?.updateProgress()
-        //progressBar.setProgress(college?.progress ?? 0, animated: true)
+        if let currentCollege = self.college{
+            do{
+                try self.realm.write {
+                    currentCollege.updateProgress()
+                }
+            }catch {
+                print("error updating college progress \("error")")
+            }
+        }
+        progressBar.setProgress(college?.progress ?? 0, animated: true)
         
 
     }
