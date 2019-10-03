@@ -8,5 +8,6 @@ target 'College Planner Student App' do
   # Pods for College Planner Student App
 pod 'TextFieldEffects'
 pod 'CircleProgressBar', '~> 0.32’
+pod 'RealmSwift'
 
 end
