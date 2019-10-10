@@ -9,5 +9,6 @@ target 'College Planner Student App' do
 pod 'TextFieldEffects'
 pod 'CircleProgressBar', '~> 0.32’
 pod 'RealmSwift'
+pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 
 end

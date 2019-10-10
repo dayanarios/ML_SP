@@ -1,4 +1,7 @@
 PODS:
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
   - CircleProgressBar (0.32)
   - Realm (3.17.3):
     - Realm/Headers (= 3.17.3)
@@ -8,6 +11,7 @@ PODS:
   - TextFieldEffects (1.6.0)
 
 DEPENDENCIES:
+  - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - CircleProgressBar (~> 0.32)
   - RealmSwift
   - TextFieldEffects
@@ -19,12 +23,22 @@ SPEC REPOS:
     - RealmSwift
     - TextFieldEffects
 
+EXTERNAL SOURCES:
+  ChameleonFramework:
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
+CHECKOUT OPTIONS:
+  ChameleonFramework:
+    :commit: 6dd284bde21ea2e7f9fd89bc36f40df16e16369d
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
 SPEC CHECKSUMS:
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   CircleProgressBar: 3920079be5224b62b3d9ed6eeb23ac01c835b681
   Realm: 5a1d9d47bfc101dd597668b1a8af4288a2557f6d
   RealmSwift: b7fdc2d18616621c31df5c7a398a45a2163f8eb0
   TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
 
-PODFILE CHECKSUM: d1b9e1ca7021a7c10639e24a9311ea78a10a477e
+PODFILE CHECKSUM: 4bc6b3b61212f628d1f9f16cd7458d1cdb9d6c01
 
 COCOAPODS: 1.7.5
