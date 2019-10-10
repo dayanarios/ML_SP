@@ -12,6 +12,7 @@ import RealmSwift
 
 class CollegeViewController: UITableViewController, collegeData {
     
+
     var colleges : Results<College>?
     
     let realm = try! Realm()
@@ -40,7 +41,7 @@ class CollegeViewController: UITableViewController, collegeData {
 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
         return colleges?.count ?? 1
     }
     
@@ -51,13 +52,10 @@ class CollegeViewController: UITableViewController, collegeData {
         
         cell.selectionStyle = .none
         
-        //cell.textLabel?.text = colleges[indexPath.row]
-        cell.collegeNameLabel.text = colleges?[indexPath.row].name ?? "No college name added"
+        let college = colleges?[indexPath.row]
         
-        //TODO: - Change date
-        let date = colleges?[indexPath.row].getDate() ?? " "
-        cell.dueDateLabel.text = "Due: " + date
-        
+        cell.setCollegeCell(college: college)
+
         
         return cell
     }
@@ -85,7 +83,6 @@ class CollegeViewController: UITableViewController, collegeData {
         else if segue.identifier == "goToAddCollege"{
             let collegeVC = segue.destination as! AddCollegeViewController
             collegeVC.delegate = self
-            //print(collegeVC.collegeTextField.text)
             
         }
     }
@@ -126,35 +123,6 @@ class CollegeViewController: UITableViewController, collegeData {
     }
     
 
-//    func createArray() -> [College]{
-//        var tempColleges : [College] = []
-//        //var tempColleges : [String] = []
-//
-//        let task1 : Task = Task(name : "parent demographics")
-//        let task2 : Task = Task(name : "student demographics")
-//        let task3 : Task = Task(name : "academics")
-//        let task4 : Task = Task(name : "personal essays")
-//        let task5 : Task = Task(name : "activities")
-//
-//        let tasks1 : [Task] = [task1, task2, task3, task4, task5]
-//        let tasks2 : [Task] = [task5, task4, task3, task2, task1, task5, task4, task3, task2, task1]
-//        let tasks3 : [Task] = [task1, task3, task5, task4, task2]
-//        let tasks4 : [Task] = [task2, task4, task3, task1, task5]
-//
-//        let note : String = "ask for letter of recommendation"
-//
-//        let t1 : College = College(name : "UCLA", dueDate : Date(), tasks : tasks1, notes: note)
-//        let t2 : College = College(name : "USC", dueDate : Date(), tasks : tasks2, notes: note)
-//        let t3 : College = College(name : "Cal", dueDate : Date(), tasks :tasks3, notes: note)
-//        let t4 : College = College(name : "Stanford", dueDate : Date(), tasks :tasks4, notes: note)
-//
-//        tempColleges.append(t1)
-//        tempColleges.append(t2)
-//        tempColleges.append(t3)
-//        tempColleges.append(t4)
-//
-//        return tempColleges
-//    }
 
 
 }

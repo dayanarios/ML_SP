@@ -18,6 +18,7 @@ class College: Object {
      @objc dynamic var notes : String = ""
      @objc dynamic var progress = CGFloat(0)
      @objc dynamic var completedTasks : Int = 0
+    @objc dynamic var priority = 3
     
 
     
@@ -38,7 +39,6 @@ class College: Object {
         
         return dateFormatter.string(from: date)
         
-    
     }
     
     func updateProgress() {
@@ -54,4 +54,6 @@ class College: Object {
         print(progress)
         
     }
+    
+
 }

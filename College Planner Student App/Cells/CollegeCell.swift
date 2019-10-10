@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import CircleProgressBar
 
 class CollegeCell: UITableViewCell {
 
 
+    @IBOutlet weak var progressBar: CircleProgressBar!
     @IBOutlet weak var dueDateLabel: UILabel!
     @IBOutlet weak var collegeNameLabel: UILabel!
     
@@ -37,9 +39,10 @@ class CollegeCell: UITableViewCell {
         }
     }
     
-    func setCollegeCell(college : College){
-        collegeNameLabel.text = college.name
-        dueDateLabel.text = college.getDate()
+    func setCollegeCell(college : College?){
+        collegeNameLabel.text = college?.name ?? "No college name set"
+        dueDateLabel.text = college?.getDate() ?? "No date set"
+        progressBar.setProgress(college?.progress ?? 0, animated: true)
     }
     
 }
