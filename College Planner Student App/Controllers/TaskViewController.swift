@@ -67,6 +67,9 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.textLabel?.text = "no task added"
         }
         
+        let progressColor = college?.getColor()
+        progressBar.progressBarProgressColor = progressColor
+        progressBar.hintViewBackgroundColor = progressColor
         progressBar.setProgress(college?.progress ?? 0, animated: true)
         
         return cell
@@ -122,14 +125,14 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
                     try self.realm.write {
                         let newTask = Task()
                         newTask.name = textField.text!
-                        currentCollege.tasks.append(newTask)
+                        currentCollege.addTask(task: newTask)
                     }
                 } catch {
                     print("error saving task \(error)")
                 }
 
             }
-            
+            self.progressBar.setProgress(self.college?.progress ?? 0, animated: true)
             self.taskTableView.reloadData()
         }
         
@@ -145,17 +148,6 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         present(alert, animated: true, completion: nil)
-        
-        if let currentCollege = self.college{
-            do{
-                try self.realm.write {
-                    currentCollege.updateProgress()
-                }
-            }catch {
-                print("error updating college progress \("error")")
-            }
-        }
-        progressBar.setProgress(college?.progress ?? 0, animated: true)
         
 
     }

@@ -8,6 +8,7 @@
 
 import UIKit
 import TextFieldEffects
+import ChameleonFramework
 
 protocol collegeData {
     func collegeAdded(college : College)
@@ -26,6 +27,8 @@ class AddCollegeViewController: UIViewController {
     var delegate : collegeData?
     
     var priority = 3
+    
+    var color = 3
 
     
     override func viewDidLoad() {
@@ -48,6 +51,7 @@ class AddCollegeViewController: UIViewController {
         newCollege.tasks.append(task1)
         newCollege.notes = notesTextView.text
         newCollege.priority = priority
+        newCollege.color = color
         
         delegate?.collegeAdded(college: newCollege)
         self.navigationController?.popViewController(animated: true)
@@ -64,10 +68,13 @@ class AddCollegeViewController: UIViewController {
         print(tag)
         switch tag {
         case 1: priority = 1 //high
+            color = 1
             break;
         case 2: priority = 2 //medium
+            color = 2
             break;
         default: priority = 3 //low
+            color = 3
             break;
         }
         

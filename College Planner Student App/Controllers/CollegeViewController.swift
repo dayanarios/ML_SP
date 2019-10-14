@@ -9,6 +9,7 @@
 import UIKit
 import CircleProgressBar
 import RealmSwift
+import ChameleonFramework
 
 class CollegeViewController: UITableViewController, collegeData {
     
@@ -21,7 +22,6 @@ class CollegeViewController: UITableViewController, collegeData {
         super.viewDidLoad()
         
         loadColleges()
-        
         
         
         tableView.separatorStyle = .none
@@ -47,7 +47,6 @@ class CollegeViewController: UITableViewController, collegeData {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CollegeCell", for: indexPath) as! CollegeCell
         
         cell.selectionStyle = .none
@@ -55,6 +54,10 @@ class CollegeViewController: UITableViewController, collegeData {
         let college = colleges?[indexPath.row]
         
         cell.setCollegeCell(college: college)
+        
+        let progressColor = college?.getColor()
+        cell.progressBar.progressBarProgressColor = progressColor
+        cell.progressBar.hintViewBackgroundColor = progressColor
 
         
         return cell

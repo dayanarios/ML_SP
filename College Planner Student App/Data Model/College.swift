@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 class College: Object {
     //var progressBar will be inside of the view added
@@ -19,6 +20,7 @@ class College: Object {
      @objc dynamic var progress = CGFloat(0)
      @objc dynamic var completedTasks : Int = 0
     @objc dynamic var priority = 3
+    @objc dynamic var color = 3
     
 
     
@@ -53,6 +55,14 @@ class College: Object {
         progress = CGFloat(completedTasks) /  CGFloat(tasks.count)
         print(progress)
         
+    }
+    
+    func getColor() -> UIColor{
+        switch (color){
+        case 1: return UIColor.flatRed
+        case 2: return UIColor.flatYellow
+        default: return UIColor.flatGreenDark
+        }
     }
     
 
