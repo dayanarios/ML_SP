@@ -14,6 +14,7 @@ import ChameleonFramework
 class CollegeViewController: UITableViewController, collegeData {
     
 
+    
     var colleges : Results<College>?
     
     let realm = try! Realm()
@@ -29,6 +30,8 @@ class CollegeViewController: UITableViewController, collegeData {
         //automatically resizes cells based on content
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 600
+        
+        
 
     }
     
@@ -121,6 +124,37 @@ class CollegeViewController: UITableViewController, collegeData {
         //tableView.reloadData()
     }
 
+    @IBAction func sortButtonPressed(_ sender: Any) {
+        
+        let sortMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
+        
+        let nameAction = UIAlertAction(title: "School Name", style: .default) { (action) in
+            self.colleges = self.colleges?.sorted(byKeyPath: "name", ascending: true)
+            self.tableView.reloadData()
+        }
+        
+        let dateAction = UIAlertAction(title: "Due Date", style: .default) { (action) in
+            self.colleges = self.colleges?.sorted(byKeyPath: "dueDate", ascending: true)
+            self.tableView.reloadData()
+        }
+        
+        let priorityAction = UIAlertAction(title: "Priority", style: .default) { (action) in
+            self.colleges = self.colleges?.sorted(byKeyPath: "priority", ascending: true)
+            self.tableView.reloadData()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        sortMenu.addAction(nameAction)
+        sortMenu.addAction(dateAction)
+        sortMenu.addAction(priorityAction)
+        sortMenu.addAction(cancelAction)
+        
+        present(sortMenu, animated: true, completion: nil)
+        
+        
+    }
+    
     func loadColleges(){
         colleges = realm.objects(College.self)
     }

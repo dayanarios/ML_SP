@@ -107,6 +107,24 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            do {
+                try realm.write {
+                    realm.delete((tasks?[indexPath.row])!)
+                    college?.updateProgress()
+                }
+            }
+            catch{
+                print("error deleting item, \("error")")
+            }
+            //tasks.remove(at: indexPath.row)
+            
+            self.progressBar.setProgress(self.college?.progress ?? 0, animated: true)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
     
     //MARK: - task button pressed
     

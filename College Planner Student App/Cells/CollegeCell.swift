@@ -11,7 +11,13 @@ import CircleProgressBar
 
 class CollegeCell: UITableViewCell {
 
-
+    @IBOutlet weak var collegeStatusView: UIView! {
+        didSet{
+            collegeStatusView.layer.cornerRadius = 10
+            collegeStatusView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+        }
+    }
+    
     
     @IBOutlet weak var progressBar: CircleProgressBar!
     @IBOutlet weak var dueDateLabel: UILabel!
@@ -19,24 +25,12 @@ class CollegeCell: UITableViewCell {
     
     @IBOutlet weak var containerView: UIView! {
         didSet {
-//            containerView.layer.cornerRadius = 10
-//            containerView.layer.shadowOpacity = 1
-//            containerView.layer.shadowRadius = 2
-//            containerView.layer.shadowColor = UIColor(named: "blue")?.cgColor
-//            containerView.layer.shadowOffset = CGSize(width: 3, height: 3)
-//            containerView.backgroundColor = UIColor(named: "cyan")
-            //containerView.layer.masksToBounds = true
-            
-            
-            //containerView.backgroundColor = UIColor.clear
+
             containerView.layer.shadowColor = UIColor.darkGray.cgColor
             containerView.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
             containerView.layer.shadowOpacity = 1.0
             containerView.layer.shadowRadius = 2
-            
 
-            
-            //containerView.clipsToBounds = true
         }
     }
     
