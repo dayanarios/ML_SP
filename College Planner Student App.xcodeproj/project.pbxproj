@@ -11,7 +11,7 @@
 		FB69E4F0231877FA00EAD4DA /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB69E4EF231877FA00EAD4DA /* TaskViewController.swift */; };
 		FB69E4F22318797800EAD4DA /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB69E4F12318797800EAD4DA /* Task.swift */; };
 		FB72F12623170A2100AFBEFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB72F12523170A2100AFBEFE /* AppDelegate.swift */; };
-		FB72F12823170A2100AFBEFE /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB72F12723170A2100AFBEFE /* FirstViewController.swift */; };
+		FB72F12823170A2100AFBEFE /* CollegeSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB72F12723170A2100AFBEFE /* CollegeSearchViewController.swift */; };
 		FB72F12A23170A2100AFBEFE /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB72F12923170A2100AFBEFE /* SecondViewController.swift */; };
 		FB72F12D23170A2100AFBEFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB72F12B23170A2100AFBEFE /* Main.storyboard */; };
 		FB72F12F23170A2100AFBEFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB72F12E23170A2100AFBEFE /* Assets.xcassets */; };
@@ -19,6 +19,7 @@
 		FB72F13A23170AE800AFBEFE /* CollegeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB72F13923170AE800AFBEFE /* CollegeViewController.swift */; };
 		FB72F13E231716DA00AFBEFE /* College.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB72F13D231716DA00AFBEFE /* College.swift */; };
 		FB72F141231716EB00AFBEFE /* CollegeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB72F140231716EB00AFBEFE /* CollegeCell.swift */; };
+		FBBEC33D2362493400FFCBF1 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBEC33C2362493400FFCBF1 /* AddTaskViewController.swift */; };
 		FBF66D812321B70B00CAB26F /* AddCollegeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF66D802321B70B00CAB26F /* AddCollegeViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +31,7 @@
 		FB69E4F12318797800EAD4DA /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		FB72F12223170A2100AFBEFE /* College Planner Student App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "College Planner Student App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB72F12523170A2100AFBEFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FB72F12723170A2100AFBEFE /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		FB72F12723170A2100AFBEFE /* CollegeSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeSearchViewController.swift; sourceTree = "<group>"; };
 		FB72F12923170A2100AFBEFE /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		FB72F12C23170A2100AFBEFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FB72F12E23170A2100AFBEFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -39,6 +40,7 @@
 		FB72F13923170AE800AFBEFE /* CollegeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeViewController.swift; sourceTree = "<group>"; };
 		FB72F13D231716DA00AFBEFE /* College.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = College.swift; sourceTree = "<group>"; };
 		FB72F140231716EB00AFBEFE /* CollegeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollegeCell.swift; sourceTree = "<group>"; };
+		FBBEC33C2362493400FFCBF1 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		FBF66D802321B70B00CAB26F /* AddCollegeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollegeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,9 +111,10 @@
 			children = (
 				FB72F13923170AE800AFBEFE /* CollegeViewController.swift */,
 				FB69E4EF231877FA00EAD4DA /* TaskViewController.swift */,
-				FB72F12723170A2100AFBEFE /* FirstViewController.swift */,
+				FB72F12723170A2100AFBEFE /* CollegeSearchViewController.swift */,
 				FB72F12923170A2100AFBEFE /* SecondViewController.swift */,
 				FBF66D802321B70B00CAB26F /* AddCollegeViewController.swift */,
+				FBBEC33C2362493400FFCBF1 /* AddTaskViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -255,8 +258,9 @@
 				FBF66D812321B70B00CAB26F /* AddCollegeViewController.swift in Sources */,
 				FB72F12623170A2100AFBEFE /* AppDelegate.swift in Sources */,
 				FB72F141231716EB00AFBEFE /* CollegeCell.swift in Sources */,
-				FB72F12823170A2100AFBEFE /* FirstViewController.swift in Sources */,
+				FB72F12823170A2100AFBEFE /* CollegeSearchViewController.swift in Sources */,
 				FB72F13E231716DA00AFBEFE /* College.swift in Sources */,
+				FBBEC33D2362493400FFCBF1 /* AddTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -65,5 +65,23 @@ class College: Object {
         }
     }
     
+    func daysBetween(start: Date, end: Date) -> Int {
+        return Calendar.current.dateComponents([.day], from: start, to: end).day!
+    }
+    
+    func checkDueDate(){
+        let diff = daysBetween(start: Date(), end: dueDate)
+        
+        if (diff <= 7){
+            color = 1
+        }
+        else if (diff <= 14){
+            color = 2
+        }
+        else {
+            color = 3
+        }
+    }
+    
 
 }

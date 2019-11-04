@@ -10,7 +10,7 @@ import UIKit
 import CircleProgressBar
 import RealmSwift
 
-class TaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, taskData {
     
     var tasks : Results<Task>?
     let realm = try! Realm()
@@ -130,51 +130,86 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func addTaskButtonPressed(_ sender: Any) {
         
+        performSegue(withIdentifier: "goToAddTask", sender: self)
+        
+       // taskTableView.reloadData()
+        
         //creates a popup to collet task info
-        var textField = UITextField()
         
-        
-        let alert = UIAlertController(title: "Add Task", message: "", preferredStyle: .alert)
-        
-        let addAction = UIAlertAction(title: "Add", style: .default) { (action) in
-            
-            if let currentCollege = self.college{
-                do {
-                    try self.realm.write {
-                        let newTask = Task()
-                        newTask.name = textField.text!
-                        currentCollege.addTask(task: newTask)
-                    }
-                } catch {
-                    print("error saving task \(error)")
-                }
-
-            }
-            self.progressBar.setProgress(self.college?.progress ?? 0, animated: true)
-            self.taskTableView.reloadData()
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-        
-        alert.addAction(addAction)
-        alert.addAction(cancelAction)
-        
-        alert.addTextField { (field) in
-            textField = field
-            textField.placeholder = "Add new Item"
-            
-        }
-        
-        present(alert, animated: true, completion: nil)
-        
+//        var textField = UITextField()
+//
+//
+//        let alert = UIAlertController(title: "Add Task", message: "", preferredStyle: .alert)
+//
+//        let addAction = UIAlertAction(title: "Add", style: .default) { (action) in
+//
+//            if let currentCollege = self.college{
+//                do {
+//                    try self.realm.write {
+//                        let newTask = Task()
+//                        newTask.name = textField.text!
+//                        currentCollege.addTask(task: newTask)
+//                    }
+//                } catch {
+//                    print("error saving task \(error)")
+//                }
+//
+//            }
+//            self.progressBar.setProgress(self.college?.progress ?? 0, animated: true)
+//            self.taskTableView.reloadData()
+//        }
+//
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+//
+//        alert.addAction(addAction)
+//        alert.addAction(cancelAction)
+//
+//        alert.addTextField { (field) in
+//            textField = field
+//            textField.placeholder = "Add new Item"
+//
+//        }
+//
+//        present(alert, animated: true, completion: nil)
+ 
 
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToAddTask" {
+            
+            let addTaskVC = segue.destination as! AddTaskViewController
+            addTaskVC.delegate = self
+                
+        }
+    }
+    
+    func taskAdded(task : Task){
+        print(task.name)
+        saveTask(task: task)
+    }
+    
+    func saveTask(task : Task){
+        
+        if let currentCollege = self.college{
+            do {
+                try self.realm.write {
+                    currentCollege.addTask(task: task)
+                }
+            } catch {
+                print("error saving task \(error)")
+            }
+
+        }
+        self.progressBar.setProgress(self.college?.progress ?? 0, animated: true)
+        self.taskTableView.reloadData()
+    }
+    
     
     //MARK: - task manipulation methods
     
     func loadItems(){
         tasks = college?.tasks.sorted(byKeyPath: "name", ascending: true)
-        //taskTableView.reloadData() //is causing an error
     }
     
 

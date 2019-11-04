@@ -13,12 +13,9 @@ class Task: Object {
     @objc dynamic var name : String = ""
     @objc dynamic var done : Bool = false
     var parentCollege = LinkingObjects(fromType: College.self, property: "tasks")
+    @objc dynamic var alerts = 3
+    @objc dynamic var notes = ""
+    @objc dynamic var dueDate : Date = Date()
     
-    //creating a one to one relationship with a Category object
-    //items is the name of list of a categories items
-    //var parentCategory = LinkingObjects(fromType: Category.self, property: "items")
-    
-//    init(name : String) {
-//        self.name = name
-//    }
+
 }

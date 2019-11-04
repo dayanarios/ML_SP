@@ -24,15 +24,13 @@ class CollegeViewController: UITableViewController, collegeData {
         
         loadColleges()
         
-        
+        updateProgressColor()
         tableView.separatorStyle = .none
         
         //automatically resizes cells based on content
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 600
-        
-        
-
+   
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,8 +79,7 @@ class CollegeViewController: UITableViewController, collegeData {
             if let indexPath = tableView.indexPathForSelectedRow {
                 
                 taskVC.college = colleges?[indexPath.row] 
-                
-                
+
             }
 
         }
@@ -159,7 +156,17 @@ class CollegeViewController: UITableViewController, collegeData {
         colleges = realm.objects(College.self)
     }
     
-
-
+    func updateProgressColor(){
+        for c in colleges!{
+            do{
+                try realm.write {
+                    c.checkDueDate()
+                }
+            } catch {
+                print("error updating due date status of college \(error)")
+            }
+            
+        }
+    }
 
 }
