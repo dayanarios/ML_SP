@@ -1,6 +1,8 @@
 ${PODS_ROOT}/Target Support Files/Pods-College Planner Student App/Pods-College Planner Student App-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework
 ${BUILT_PRODUCTS_DIR}/CircleProgressBar/CircleProgressBar.framework
 ${BUILT_PRODUCTS_DIR}/Realm/Realm.framework
 ${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework
+${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
 ${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework
